@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Easy Notes</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link rel="icon" type="image/x-icon" href="./img/notizblock.png" />
+  </head>
+  <body onload="render()">
+    <header>
+      <img 
+        class="menuIcon" 
+        src="./img/list.png" 
+        alt="Menu" 
+        onclick="toggleMenu()"
+        />
+      <img
+        class="headerIcon"
+        src="./img/notizblock.png"
+        alt="Notizblock Logo"
+      />
+      <h1 class="headline">Easy Notes</h1>
+    </header>
+     <div id="menu" class="menu">
+          <a href="index.html"> <img class="sidemenuIcon" src="./img/notes.png" alt="Notizen">Notizen</a>
+          <a href="trash.html"> <img class="sidemenuIcon" src="./img/delete.png" alt="Papierkorb">Papierkorb</a>
+        </div>
+   <section class="inputContainer">
+      <div class="inputBox">
+        <form class="inputForm">
+          <input
+            id="titleInput"
+            class="inputField"
+            type="text"
+            placeholder="Titel"
+          />
+          <textarea
+            id="noteInput"
+            type="text"
+            placeholder="Notiz schreiben ..."
+            oninput="autoGrow(this)"
+          ></textarea>
+          <div class="buttonField">
+            <button onclick="addNote(); return false" ; class="inputButton">
+              hinzufügen
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="noteContainer" id="noteContainer"></section>
+  </body>
+</html>
