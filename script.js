@@ -1,17 +1,17 @@
-//=== Arrays der Hauptseite ===//
+// Main Page Arrays 
 let titles = [];
 let notes = [];
 
-//=== Arrays der Trash-Seite ===//
+// Trash Page Arrays
 
 let deletedTitles = [];
 let deletedNotes = [];
 
-//=== Notizen aus dem Local Storage laden ===//
+// Load Notes from Local Storage
 load();
 loadDeletedNotes();
 
-//=== Notizen in den Container laden ===//
+// Load Notes in Container
 function render() {
   let content = document.getElementById("noteContainer");
   content.innerHTML = "";
@@ -41,7 +41,7 @@ function render() {
   }
 }
 
-//=== Notizen in den Gelöschte Notizen Container laden ===//
+// Load Trash Notes in Trash Notes Container
 function renderDeletedNotes() {
   let content = document.getElementById("deletedNotesContainer");
   content.innerHTML = "";
@@ -80,7 +80,7 @@ function renderDeletedNotes() {
   }
 }
 
-//=== Neue Notiz hinzufügen ===//
+// Add new Note
 function addNote() {
   let noteTitle = document.getElementById("titleInput");
   let noteText = document.getElementById("noteInput");
@@ -100,7 +100,7 @@ function addNote() {
   }
 }
 
-//=== Notiz löschen und in Trash Arrays übertragen ===//
+// Delete Notes and transfer to Trash Array
 function deleteNote(i) {
   deletedTitles.push(titles.splice(i, 1));
   deletedNotes.push(notes.splice(i, 1));
@@ -109,7 +109,7 @@ function deleteNote(i) {
   render();
 }
 
-//=== Gelöschte Notiz wiederherstellen ===//
+// Restore deleted Notes
 function restoreNote(i) {
   titles.push(deletedTitles.splice(i, 1));
   notes.push(deletedNotes.splice(i, 1));
@@ -118,7 +118,7 @@ function restoreNote(i) {
   renderDeletedNotes();
 }
 
-//=== Notiz permanent löschen ===//
+// Delete Note permanently
 function deleteNotePermanent(i) {
   deletedTitles.splice(i, 1);
   deletedNotes.splice(i, 1);
@@ -127,7 +127,7 @@ function deleteNotePermanent(i) {
   renderDeletedNotes();
 }
 
-//=== Notizen in Local Storage speichern ===//
+// Save Notes to Local Storage
 function save() {
   let titlesAsText = JSON.stringify(titles);
   localStorage.setItem("titles", titlesAsText);
@@ -142,7 +142,7 @@ function save() {
   localStorage.setItem("deletedNotes", deletedNotesAsText);
 }
 
-//=== Notizen aus Local Storage laden ===//
+// Load Notes from Local Storage
 function load() {
   let titlesAsText = localStorage.getItem("titles");
   let notesAsText = localStorage.getItem("notes");
@@ -153,7 +153,7 @@ function load() {
   }
 }
 
-//=== Glöschte Notizen aus Local Storage laden ===//
+// Load Trash notes from Local Storage
 function loadDeletedNotes() {
   let deletedTitlesAsText = localStorage.getItem("deletedTitles");
   let deletedNotesAsText = localStorage.getItem("deletedNotes");
@@ -164,7 +164,7 @@ function loadDeletedNotes() {
   }
 }
 
-//=== Eingabefeld an Inhalt anpassen ===//
+// Make Input field growing with Text
 function autoGrow(element) {
   if (element.scrollHeight > 36) {
     element.style.height = 5 + "px";
@@ -174,7 +174,7 @@ function autoGrow(element) {
   }
 }
 
-//=== Menü Ein- und Ausblenden ===//
+// Toggle Menu Bar
 function toggleMenu() {
   let menu = document.getElementById("menu");
   if (menu.style.display === "none") {
