@@ -21,7 +21,7 @@ function render() {
     const note = notes[i];
 
     content.innerHTML += renderTemplate(i, title, note);
-}
+  }
 }
 
 // Load Trash Notes in Trash Notes Container
@@ -42,19 +42,15 @@ function addNote() {
   let noteTitle = document.getElementById("titleInput");
   let noteText = document.getElementById("noteInput");
 
-  if (noteTitle.value.length > 0 && noteText.value.length > 0) {
-    titles.push(noteTitle.value);
-    notes.push(noteText.value);
+  titles.push(noteTitle.value);
+  notes.push(noteText.value);
 
-    document.getElementById("titleInput").value = "";
-    document.getElementById("noteInput").value = "";
+  document.getElementById("titleInput").value = "";
+  document.getElementById("noteInput").value = "";
 
-    autoGrow(noteText);
-    render();
-    save();
-  } else {
-    alert("Bitte Notiz Titel und Text eingeben");
-  }
+  autoGrow(noteText);
+  render();
+  save();
 }
 
 // Delete Notes and transfer to Trash Array

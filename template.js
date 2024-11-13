@@ -1,5 +1,5 @@
-function renderTemplate(i, title, note){
-    return /*html*/ ` 
+function renderTemplate(i, title, note) {
+  return /*html*/ ` 
     <div class="noteBox">
       <span class="noteTitle">${title}</span>
       <br />
@@ -17,10 +17,10 @@ function renderTemplate(i, title, note){
       </div>
       </div>
     </div>`;
-  }
+}
 
-function deletedNotesTemplate(title, note, i){
-    return /*html*/ ` 
+function deletedNotesTemplate(title, note, i) {
+  return /*html*/ ` 
     <div class="noteBox">
       <span class="noteTitle">${title}</span>
       <br />
@@ -47,4 +47,4 @@ function deletedNotesTemplate(title, note, i){
       </div>
       </div>
     </div>`;
-  }
+}

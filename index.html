@@ -11,12 +11,12 @@
   </head>
   <body onload="render()">
     <header>
-      <img 
-        class="menuIcon" 
-        src="./img/list.png" 
-        alt="Menu" 
+      <img
+        class="menuIcon"
+        src="./img/list.png"
+        alt="Menu"
         onclick="toggleMenu()"
-        />
+      />
       <img
         class="headerIcon"
         src="./img/notizblock.png"
@@ -24,29 +24,37 @@
       />
       <h1 class="headline">Easy Notes</h1>
     </header>
-     <div id="menu" class="menu">
-          <a href="index.html"> <img class="sidemenuIcon" src="./img/notes.png" alt="Notizen">Notes</a>
-          <a href="trash.html"> <img class="sidemenuIcon" src="./img/delete.png" alt="Papierkorb">Trash</a>
-        </div>
-   <section class="inputContainer">
+    <div id="menu" class="menu">
+      <a href="index.html">
+        <img class="sidemenuIcon" src="./img/notes.png" alt="Notizen" />Notes</a
+      >
+      <a href="trash.html">
+        <img
+          class="sidemenuIcon"
+          src="./img/delete.png"
+          alt="Papierkorb"
+        />Trash</a
+      >
+    </div>
+    <section class="inputContainer">
       <div class="inputBox">
-        <form class="inputForm">
+        <form class="inputForm" onsubmit="addNote()">
           <input
             id="titleInput"
             class="inputField"
             type="text"
             placeholder="Titel"
+            required
           />
           <textarea
             id="noteInput"
             type="text"
             placeholder="Notiz schreiben ..."
             oninput="autoGrow(this)"
+            required
           ></textarea>
           <div class="buttonField">
-            <button onclick="addNote(); return false" ; class="inputButton">
-              hinzufügen
-            </button>
+            <button type="submit" ; class="inputButton">hinzufügen</button>
           </div>
         </form>
       </div>

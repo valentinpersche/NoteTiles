@@ -35,7 +35,7 @@ body {
   left: 20px;
 }
 
-.menuIcon:hover{
+.menuIcon:hover {
   height: 42px;
   cursor: pointer;
 }
@@ -54,7 +54,6 @@ header {
   font-weight: 100;
   color: #5f6368;
   font-family: Roboto;
-  
 }
 
 hr {
@@ -67,26 +66,25 @@ hr {
   justify-content: center;
 }
 
-.menu{
+.menu {
   box-shadow: 0px 0px 2px 1px black;
   background-color: rgba(246, 80, 31, 0.4);
   padding-top: 5px;
   padding-bottom: 3px;
 }
 
-.menu a{
+.menu a {
   text-decoration: none;
   font-size: 18px;
   color: black;
 }
 
-
-.menu a:hover{
+.menu a:hover {
   font-weight: bold;
   font-size: 18px;
 }
 
-.sidemenuIcon{
+.sidemenuIcon {
   width: 25px;
   padding-right: 8px;
   padding-left: 20px;
@@ -122,7 +120,7 @@ hr {
   outline: none;
 }
 
-textarea{
+textarea {
   resize: none;
   overflow: hidden;
   width: 75%;
@@ -132,7 +130,7 @@ textarea{
   font-size: 18px;
 }
 
-textarea:focus{
+textarea:focus {
   outline: none;
 }
 
@@ -154,14 +152,14 @@ textarea:focus{
   cursor: pointer;
 }
 
-.noteContainer{
+.noteContainer {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
 }
 
-.noteBox{
+.noteBox {
   min-height: 100px;
   height: 100%;
   min-width: 100px;
@@ -175,51 +173,51 @@ textarea:focus{
   flex-direction: column;
 }
 
-.noteBox:hover{
+.noteBox:hover {
   box-shadow: 1px 2px 4px 1px #5f6368;
 }
 
-.noteTitle{
+.noteTitle {
   font-size: 14px;
   font-weight: bold;
 }
 
-.noteText{
+.noteText {
   font-size: 14px;
   white-space: pre-line;
 }
 
-.imageContainer{
+.imageContainer {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   flex: 1;
 }
 
-.clearImage{
+.clearImage {
   height: auto;
   width: 18px;
   object-fit: cover;
 }
 
-.restoreImage{
+.restoreImage {
   height: auto;
   width: 18px;
   object-fit: cover;
   padding-right: 15px;
 }
 
-.clearImage:hover{
+.clearImage:hover {
   filter: drop-shadow(0px 0px 10px grey);
   width: 22px;
 }
 
-.restoreImage:hover{
+.restoreImage:hover {
   filter: drop-shadow(0px 0px 10px grey);
   width: 22px;
 }
 
-.clearImage:hover{
+.clearImage:hover {
   cursor: pointer;
 }
 
@@ -237,7 +235,7 @@ textarea:focus{
   border-radius: 6px;
   padding: 5px;
   position: absolute;
-  z-index: 1; 
+  z-index: 1;
   top: 100%;
   left: 115%;
   margin-left: -60px;
@@ -254,7 +252,7 @@ textarea:focus{
   border-radius: 6px;
   padding: 5px;
   position: absolute;
-  z-index: 1; 
+  z-index: 1;
   top: 100%;
   left: 30%;
   margin-left: -60px;
@@ -271,4 +269,3 @@ textarea:focus{
   visibility: visible;
   opacity: 1;
 }
-
