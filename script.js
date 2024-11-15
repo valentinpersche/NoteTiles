@@ -1,37 +1,35 @@
-// Main Page Arrays
-let titles = [];
-let notes = [];
-
-// Trash Page Arrays
-
-let deletedTitles = [];
-let deletedNotes = [];
+// All Notes Object
+let allNotes = {
+  titles: [],
+  notes: [],
+  trashTitles: [],
+  trashNotes: [],
+};
 
 // Load Notes from Local Storage
 load();
-loadDeletedNotes();
+loadTrashNotes();
 
-// Load Notes in Container
+// Render Notes
 function render() {
   let content = document.getElementById("noteContainer");
   content.innerHTML = "";
 
-  for (let i = 0; i < notes.length; i++) {
-    const title = titles[i];
-    const note = notes[i];
+  for (let i = 0; i < allNotes.notes.length; i++) {
+    const title = allNotes.titles[i];
+    const note = allNotes.notes[i];
 
     content.innerHTML += renderTemplate(i, title, note);
   }
 }
-
-// Load Trash Notes in Trash Notes Container
-function renderDeletedNotes() {
+// Render Trash Notes
+function renderTrashNotes() {
   let content = document.getElementById("deletedNotesContainer");
   content.innerHTML = "";
 
-  for (let i = 0; i < deletedNotes.length; i++) {
-    const title = deletedTitles[i];
-    const note = deletedNotes[i];
+  for (let i = 0; i < allNotes.trashNotes.length; i++) {
+    const title = allNotes.trashTitles[i];
+    const note = allNotes.trashNotes[i];
 
     content.innerHTML += deletedNotesTemplate(title, note, i);
   }
@@ -42,8 +40,8 @@ function addNote() {
   let noteTitle = document.getElementById("titleInput");
   let noteText = document.getElementById("noteInput");
 
-  titles.push(noteTitle.value);
-  notes.push(noteText.value);
+  allNotes.titles.push(noteTitle.value);
+  allNotes.notes.push(noteText.value);
 
   document.getElementById("titleInput").value = "";
   document.getElementById("noteInput").value = "";
@@ -53,45 +51,45 @@ function addNote() {
   save();
 }
 
-// Delete Notes and transfer to Trash Array
+// Transfer Notes to Trash Notes
 function deleteNote(i) {
-  deletedTitles.push(titles.splice(i, 1));
-  deletedNotes.push(notes.splice(i, 1));
+  allNotes.trashTitles.push(allNotes.titles.splice(i, 1));
+  allNotes.trashNotes.push(allNotes.notes.splice(i, 1));
 
   save();
   render();
 }
 
-// Restore deleted Notes
+// Transfer Trash Notes to Notes
 function restoreNote(i) {
-  titles.push(deletedTitles.splice(i, 1));
-  notes.push(deletedNotes.splice(i, 1));
+  allNotes.titles.push(allNotes.trashTitles.splice(i, 1));
+  allNotes.notes.push(allNotes.trashNotes.splice(i, 1));
 
   save();
-  renderDeletedNotes();
+  renderTrashNotes();
 }
 
 // Delete Note permanently
 function deleteNotePermanent(i) {
-  deletedTitles.splice(i, 1);
-  deletedNotes.splice(i, 1);
+  allNotes.trashTitles.splice(i, 1);
+  allNotes.trashNotes.splice(i, 1);
 
   save();
-  renderDeletedNotes();
+  renderTrashNotes();
 }
 
-// Save Notes to Local Storage
+// Save Notes and Trash Notes to Local Storage
 function save() {
-  let titlesAsText = JSON.stringify(titles);
+  let titlesAsText = JSON.stringify(allNotes.titles);
   localStorage.setItem("titles", titlesAsText);
 
-  let notesAsText = JSON.stringify(notes);
+  let notesAsText = JSON.stringify(allNotes.notes);
   localStorage.setItem("notes", notesAsText);
 
-  let deletedTitlesAsText = JSON.stringify(deletedTitles);
+  let deletedTitlesAsText = JSON.stringify(allNotes.trashTitles);
   localStorage.setItem("deletedTitles", deletedTitlesAsText);
 
-  let deletedNotesAsText = JSON.stringify(deletedNotes);
+  let deletedNotesAsText = JSON.stringify(allNotes.trashNotes);
   localStorage.setItem("deletedNotes", deletedNotesAsText);
 }
 
@@ -101,19 +99,19 @@ function load() {
   let notesAsText = localStorage.getItem("notes");
 
   if (titlesAsText && notesAsText) {
-    titles = JSON.parse(titlesAsText);
-    notes = JSON.parse(notesAsText);
+    allNotes.titles = JSON.parse(titlesAsText);
+    allNotes.notes = JSON.parse(notesAsText);
   }
 }
 
 // Load Trash notes from Local Storage
-function loadDeletedNotes() {
+function loadTrashNotes() {
   let deletedTitlesAsText = localStorage.getItem("deletedTitles");
   let deletedNotesAsText = localStorage.getItem("deletedNotes");
 
   if (deletedTitlesAsText && deletedNotesAsText) {
-    deletedTitles = JSON.parse(deletedTitlesAsText);
-    deletedNotes = JSON.parse(deletedNotesAsText);
+    allNotes.trashTitles = JSON.parse(deletedTitlesAsText);
+    allNotes.trashNotes = JSON.parse(deletedNotesAsText);
   }
 }
 
