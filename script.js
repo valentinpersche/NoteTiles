@@ -22,6 +22,7 @@ function render() {
     content.innerHTML += renderTemplate(i, title, note);
   }
 }
+
 // Render Trash Notes
 function renderTrashNotes() {
   let content = document.getElementById("deletedNotesContainer");
